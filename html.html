@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT Replica</title>
+
+
+</head>
+
+<body>
+
+
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('open');
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('userInput');
+            const messages = document.getElementById('messages');
+
+            if (input.value.trim() === '') return;
+
+            // User message
+            const userMessage = document.createElement('div');
+            userMessage.className = 'message user';
+            userMessage.textContent = input.value;
+            messages.appendChild(userMessage);
+
+            // Add to history
+            const history = document.getElementById('history');
+            const historyEntry = document.createElement('div');
+            historyEntry.textContent = input.value;
+            history.appendChild(historyEntry);
+
+            // Bot response
+            const botMessage = document.createElement('div');
+            botMessage.className = 'message bot';
+            botMessage.textContent = 'Processing your message...';
+            messages.appendChild(botMessage);
+
+            // Scroll to the bottom
+            messages.scrollTop = messages.scrollHeight;
+
+            // Clear input
+            input.value = '';
+
+            // Simulate bot response delay
+            setTimeout(() => {
+                botMessage.textContent = 'This is a simulated response.';
+            }, 1000);
+        }
+    </script>
+</body>
+
+</html>
